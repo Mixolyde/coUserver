@@ -1,3 +1,4 @@
+library util_test;
 
 import 'dart:convert';
 import 'dart:io';
@@ -10,9 +11,10 @@ main() {
   //remove all loaded handlers, and clean up resources
   tearDown(() {
     //app.tearDown();
-    File file = new File('./streetEntities');
+    Directory file = new Directory('./streetEntities');
     if (file.existsSync())
     {
+      print("Deleting directory: $file");
       file.deleteSync(recursive:true);
     }
   });
@@ -23,10 +25,8 @@ main() {
   test("create street entities JSON", () {
     File file = new File('./streetEntities/UNIT_TEST.json');
     file.createSync(recursive:true);
-    var sink = file.openWrite();
-    var testMap = {"test":"value"};
-    sink.write(JSON.encode(testMap));
-    sink.close();
+    file.writeAsStringSync(
+        JSON.encode({"test":"value"}));
     
     expect(getStreetEntities("UNIT_TEST.json"), containsPair("test", "value"));  
   });  

@@ -1,3 +1,4 @@
+library server_test;
 
 import 'package:unittest/unittest.dart';
 
