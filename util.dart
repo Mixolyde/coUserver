@@ -121,7 +121,7 @@ String getTsidOfUnfilledStreet()
 {
 	String tsid = null;
 
-	File file = new File('./streetEntities/streets.json');
+	File file = new File('./resources/streets.json');
 	File finished = new File('./streetEntities/finished.json');
 
 	if(!finished.existsSync())
@@ -288,7 +288,7 @@ Future<Map> getStreetFillerStats()
 	{
 		try
 		{
-			File file = new File('./streetEntities/streets.json');
+			File file = new File('./resources/streets.json');
 			Map streets = JSON.decode(file.readAsStringSync());
 
 			int trulyFinished = 0;
@@ -319,7 +319,7 @@ Future<Map> getStreetFillerStats()
 			Directory dir = new Directory('./streetEntities');
 			for(File f in dir.listSync())
 			{
-				if(f.path.contains('.bak') || f.path.contains('streets.json')
+				if(f.path.contains('.bak')
 				   || f.path.contains('finished.json'))
 					continue;
 
