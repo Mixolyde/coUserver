@@ -10,7 +10,7 @@ import '../declarations.dart';
 
 main() {  
   
-  //load handlers in 'authServer' library
+  //load handlers in 'coUserver' library
   setUp(() => app.setUp([#coUserver]));
 
   //remove all loaded handlers
