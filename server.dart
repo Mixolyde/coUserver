@@ -88,16 +88,6 @@ crossOriginInterceptor()
 
 _createCorsHeader() => {"Access-Control-Allow-Origin": "*","Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"};
 
-@app.Route('/ah/list')
-@Encode()
-Future<List<Auction>> getAllAuctions(@app.Attr() PostgreSql dbConn) =>
-		dbConn.query("select * from auctions", Auction);
-
-@app.Route('/ah/post', methods: const[app.POST])
-Future addAuction(@Decode() Auction auction) =>
-		postgreSql.execute("insert into auctions (item_name,total_cost,username) "
-						   "values (@item_name, @total_cost, @username)",auction);
-
 @app.Route('/serverStatus')
 Map getServerStatus()
 {
